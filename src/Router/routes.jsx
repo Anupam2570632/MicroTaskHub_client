@@ -4,7 +4,13 @@ import Root from "../Layout/Root/Root";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
+    element: <Root />,
+    children: [
+      {
+        path: "/login",
+        element: <div className="h-[500px]">hello login</div>,
+      },
+    ],
   },
 ]);
 
