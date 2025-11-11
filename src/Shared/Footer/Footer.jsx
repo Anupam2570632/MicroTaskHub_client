@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bg-blue-500 pt-10 text-white">
-      <div className="mx-10">
-        <div className="flex items-center justify-between pb-6">
+      <div className="mx-4 md:mx-10">
+        <div className="md:flex items-center justify-between pb-6 space-y-6">
           <div className=" flex-1 space-y-4">
             <h1>Micro-Task and Earning Platform</h1>
             <button className="px-6 py-2 text-blue-500 bg-white rounded-full font-bold hover:bg-gray-300 duration-300 ease-in">
@@ -37,7 +37,7 @@ const Footer = () => {
                 <FaInstagram className="text-xl font-bold cursor-pointer" />
               </a>
             </div>
-            <div className="flex gap-4">
+            <div className="flex-wrap md:flex gap-4">
               <h2>Contact Us : </h2>
               <div>
                 <h1>Dhaka, Bangladesh</h1>
