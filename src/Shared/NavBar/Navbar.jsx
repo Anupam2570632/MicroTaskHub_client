@@ -1,7 +1,16 @@
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCoinsLine } from "react-icons/ri";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleHamburgerClick = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   const user = true;
+
   const links = (
     <>
       {user ? (
@@ -9,7 +18,7 @@ const Navbar = () => {
           <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
             Dashboard
           </li>
-          <li className="flex items-center justify-center gap-2">
+          <li className="flex items-center justify-center gap-2 py-2 px-3">
             <RiCoinsLine className="text-2xl" />
             <div>0</div>
           </li>
@@ -32,7 +41,7 @@ const Navbar = () => {
           <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
             Register
           </li>
-          <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
+          <li className="py-2 px-3 font-bold text-nowrap hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
             Watch Demo
           </li>
         </>
@@ -42,9 +51,25 @@ const Navbar = () => {
 
   return (
     <div className="bg-blue-500">
-      <div className="max-w-[1100px] flex items-center justify-between mx-auto py-2">
+      <div className="max-w-[1100px] flex items-center justify-between mx-auto py-2 px-6 relative">
         <h1 className="text-xl font-bold text-white">MicroTaskHub</h1>
-        <ul className="flex gap-6 text-white">{links}</ul>
+
+        <div className="md:hidden relative">
+          <GiHamburgerMenu
+            onClick={handleHamburgerClick}
+            className="text-2xl text-white cursor-pointer"
+          />
+
+          <ul
+            className={`absolute right-0 p-2 mt-2 bg-blue-500 text-white items-center rounded-md shadow-md flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out ${
+              isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            {links}
+          </ul>
+        </div>
+
+        <ul className="gap-6 text-white hidden md:flex">{links}</ul>
       </div>
     </div>
   );
