@@ -9,7 +9,7 @@ const Navbar = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const user = true;
+  const user = false;
 
   const links = (
     <>
