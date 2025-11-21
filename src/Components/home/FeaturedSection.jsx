@@ -25,8 +25,8 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-16 sm:py-24">
-      <div className="container mx-auto px-4">
+    <section className="py-16 sm:py-24 bg-[#1d51ec25]">
+      <div className="md:w-10/12 mx-auto w-full container px-4">
         <div className="text-center">
           <h2 className="text-3xl font-bold sm:text-4xl">
             Everything You Need to Succeed
@@ -41,9 +41,9 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="border rounded-2xl p-8 shadow-sm hover:shadow-md transition text-center bg-white"
+              className="border rounded-2xl p-8 shadow-sm hover:shadow-md transition text-center "
             >
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full ">
                 {feature.icon}
               </div>
 
