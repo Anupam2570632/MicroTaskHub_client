@@ -9,7 +9,9 @@ const Root = () => {
   return (
     <div>
       <Navbar />
-      <HeroSection />
+      <div className="mt-[58px]">
+        <HeroSection />
+      </div>
 
       <FeaturesSection />
       <HowItWorksSection />

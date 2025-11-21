@@ -6,7 +6,7 @@ const heroSlides = [
     id: "hero-1",
     title: "Unlock Your Earning Potential",
     subtitle: "Complete simple tasks and earn rewards from anywhere, anytime.",
-    imageUrl: "/hero-1.avif",
+    imageUrl: "/hero-4.avif",
   },
   {
     id: "hero-2",

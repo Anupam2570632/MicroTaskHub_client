@@ -50,18 +50,18 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-blue-500">
+    <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-blue-500/30 shadow-md text-[#060606]">
       <div className="max-w-[1100px] flex items-center justify-between mx-auto py-2 px-6 relative">
-        <h1 className="text-xl font-bold text-white">MicroTaskHub</h1>
+        <h1 className="text-xl font-bold ">MicroTaskHub</h1>
 
         <div className="md:hidden relative">
           <GiHamburgerMenu
             onClick={handleHamburgerClick}
-            className="text-2xl text-white cursor-pointer"
+            className="text-2xl  cursor-pointer"
           />
 
           <ul
-            className={`absolute right-0 p-2 mt-2 bg-blue-500 text-white items-center rounded-md shadow-md flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out ${
+            className={`absolute right-0 p-2 mt-2 bg-blue-500  items-center rounded-md shadow-md flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out ${
               isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
@@ -69,7 +69,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <ul className="gap-6 text-white hidden md:flex">{links}</ul>
+        <ul className="gap-6  hidden md:flex">{links}</ul>
       </div>
     </div>
   );
