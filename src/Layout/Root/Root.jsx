@@ -4,6 +4,7 @@ import Footer from "../../Shared/Footer/Footer";
 import FeaturesSection from "../../Components/home/FeaturedSection";
 import HeroSection from "../../Components/home/HeroSection";
 import HowItWorksSection from "../../Components/home/HowToStart";
+import Testimonials from "../../Components/home/Testimonial";
 
 const Root = () => {
   return (
@@ -15,6 +16,8 @@ const Root = () => {
 
       <FeaturesSection />
       <HowItWorksSection />
+
+      <Testimonials />
 
       <Outlet />
       <Footer />
