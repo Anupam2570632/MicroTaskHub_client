@@ -40,11 +40,10 @@ export default function Testimonials() {
         {/* Heading */}
         <div className="flex flex-col items-center text-center space-y-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-blue-600">
-            Trusted by Industry Leaders
+            What Our Users Say
           </h2>
           <p className="max-w-[900px] text-gray-600 md:text-lg">
-            See how leading enterprises are leveraging ApexCloud to drive
-            innovation and growth.
+            Real stories from our amazing community.
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCoinsLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
       {user ? (
         <>
           <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
-            Dashboard
+            <Link to="/dashboard">Dashboard</Link>
           </li>
           <li className="flex items-center justify-center gap-2 py-2 px-3">
             <RiCoinsLine className="text-2xl" />
