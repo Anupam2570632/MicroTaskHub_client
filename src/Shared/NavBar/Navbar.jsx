@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
       {user ? (
         <>
-          <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
+          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li className="flex items-center justify-center gap-2 py-2 px-3">
@@ -30,19 +30,19 @@ const Navbar = () => {
               alt=""
             />
           </li>
-          <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
+          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Log Out
           </li>
         </>
       ) : (
         <>
-          <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
+          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Login
           </li>
-          <li className="py-2 px-3 font-bold hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
+          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Register
           </li>
-          <li className="py-2 px-3 font-bold text-nowrap hover:bg-white duration-200 ease-in cursor-pointer rounded-sm hover:text-blue-500">
+          <li className="py-2 px-3 font-bold text-nowrap hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Watch Demo
           </li>
         </>
@@ -51,7 +51,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-blue-500/30 shadow-md text-[#060606]">
+    <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#182326] shadow-md text-[#e9eaea]">
       <div className="max-w-[1100px] flex items-center justify-between mx-auto py-2 px-6 relative">
         <h1 className="text-xl font-bold ">MicroTaskHub</h1>
 

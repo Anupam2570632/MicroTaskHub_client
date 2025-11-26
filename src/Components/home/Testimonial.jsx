@@ -35,11 +35,11 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="w-full bg-black/10 py-16 md:py-24 lg:py-32">
+    <section className="w-full bg-[#20292b] py-16 md:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Heading */}
         <div className="flex flex-col items-center text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-blue-600">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#e9eaea]">
             What Our Users Say
           </h2>
           <p className="max-w-[900px] text-gray-600 md:text-lg">
@@ -52,17 +52,17 @@ export default function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
-              className="flex flex-col justify-between bg-white shadow-md rounded-xl p-6 border border-gray-200"
+              className="flex flex-col justify-between shadow-md rounded-xl p-6  bg-[#2e3536] hover:scale-[1.01] duration-150 cursor-pointer"
             >
               <div>
-                <blockquote className="text-lg italic text-gray-800">
+                <blockquote className="text-lg italic text-[#acb3b67c]">
                   “{testimonial.quote}”
                 </blockquote>
               </div>
 
               <div className="mt-6 flex items-center gap-4">
                 <div className="flex flex-col flex-1">
-                  <p className="font-semibold text-gray-900">
+                  <p className="font-semibold text-[#e9eaea]">
                     {testimonial.name}
                   </p>
                   <p className="text-sm text-gray-500">{testimonial.title}</p>

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="backdrop-blur-md bg-blue-500/30 shadow-md pt-10 text-black">
+    <div className="backdrop-blur-md bg-[#182326] shadow-md pt-10 text-[#acb3b6]">
       <div className="mx-4 md:mx-10">
         <div className="md:flex items-center justify-between pb-6 space-y-6">
           <div className=" flex-1 space-y-4">
             <h1>Micro-Task and Earning Platform</h1>
-            <button className="px-6 py-2 text-white bg-[#3d9bc6ae] rounded-full font-bold hover:bg-[#3d9bc66a] duration-300 ease-in">
+            <button className="px-6 py-2 text-white bg-[#2b373a] rounded-full font-bold cursor-pointer hover:bg-[#4d5f63] duration-200 ease-in">
               Register
             </button>
           </div>
