@@ -10,7 +10,7 @@ const Navbar = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const user = true;
+  const user = false;
 
   const links = (
     <>
@@ -40,7 +40,7 @@ const Navbar = () => {
             Login
           </li>
           <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
-            Register
+            <Link to="/register">Register</Link>
           </li>
           <li className="py-2 px-3 font-bold text-nowrap hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Watch Demo
