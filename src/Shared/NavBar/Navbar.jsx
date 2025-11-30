@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCoinsLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +10,7 @@ const Navbar = () => {
   const handleHamburgerClick = () => {
     setIsOpen((prev) => !prev);
   };
-
-  const user = false;
+  const { user} = useContext(AuthContext);
 
   const links = (
     <>

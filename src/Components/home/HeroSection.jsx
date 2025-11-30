@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const heroSlides = [
   {
@@ -79,13 +80,13 @@ export default function HeroSection() {
                   Get Started
                 </a>
 
-                <a
-                  href="/tasks"
+                <Link
+                  to="/dashboard"
                   // className="bg-white text-black px-6 py-3 rounded-lg text-lg hover:bg-gray-200"
                    className="py-2 px-3 font-bold bg-[#55695c] hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm text-[#e7e7d8] hover:text-[#acb3b6]"
                 >
                   Browse Tasks
-                </a>
+                </Link>
               </div>
             </div>
           </div>
