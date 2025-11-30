@@ -3,21 +3,23 @@ import Root from "../Layout/Root/Root";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import DashboardHome from "../Pages/Dashboard/Home";
 import RegisterPage from "../Pages/Root/Register";
+import LoginPage from "../Pages/Root/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      {
-        path: "/login",
-        element: <div className="h-[500px]">hello login</div>,
-      },
+      
     ],
   },
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   },
   {
     path: "/dashboard",

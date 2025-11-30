@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
       {user ? (
         <>
-          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li className="flex items-center justify-center gap-2 py-2 px-3">
@@ -30,19 +30,19 @@ const Navbar = () => {
               alt=""
             />
           </li>
-          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Log Out
           </li>
         </>
       ) : (
         <>
-          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
-            Login
+          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+            <Link to="/login">Login</Link>
           </li>
-          <li className="py-2 px-3 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             <Link to="/register">Register</Link>
           </li>
-          <li className="py-2 px-3 font-bold text-nowrap hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+          <li className="py-3 px-4 font-bold text-nowrap hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             Watch Demo
           </li>
         </>
