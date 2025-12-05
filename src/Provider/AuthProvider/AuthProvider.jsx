@@ -1,7 +1,7 @@
 import { AuthContext } from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
-  const user = false;
+  const user = true;
   const AuthInfo = { user };
 
   return (

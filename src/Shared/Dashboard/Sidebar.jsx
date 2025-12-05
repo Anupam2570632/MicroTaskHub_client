@@ -7,14 +7,19 @@ import {
   FaStar,
   FaHouseMedical,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function DashboardSidebar() {
-  const [active, setActive] = useState("/dashboard");
+  // const [active, setActive] = useState("/dashboard");
+  const [active, setActive] = useState(window.location.pathname);
+
+
+  console.log(active)
 
   const navItems = [
     { href: "/dashboard", icon: <FaHouseMedical />, label: "Dashboard" },
     {
-      href: "/dashboard/tasks",
+      href: "/dashboard/allTasks",
       icon: <FaListCheck />,
       label: "Available Tasks",
       badge: 5,
@@ -52,7 +57,8 @@ export default function DashboardSidebar() {
       <div className="flex-1 overflow-y-auto py-4 px-2">
         <nav className="grid gap-2 text-sm font-medium">
           {navItems.map((item) => (
-            <button
+            <Link
+              to={item.href}
               key={item.label}
               onClick={() => setActive(item.href)}
               className={`
@@ -78,7 +84,7 @@ export default function DashboardSidebar() {
                   {item.badge}
                 </span>
               )}
-            </button>
+            </Link>
           ))}
         </nav>
       </div>
