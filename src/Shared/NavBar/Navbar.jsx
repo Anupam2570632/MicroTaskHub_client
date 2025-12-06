@@ -10,7 +10,8 @@ const Navbar = () => {
   const handleHamburgerClick = () => {
     setIsOpen((prev) => !prev);
   };
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  console.log(user?.photoURL);
 
   const links = (
     <>
@@ -23,11 +24,11 @@ const Navbar = () => {
             <RiCoinsLine className="text-2xl" />
             <div>0</div>
           </li>
-          <li className="rounded-full border-3 border-transparent hover:border-3 hover:border-white duration-150 ease-in cursor-pointer">
+          <li className="h-12 w-12 rounded-full border-3 border-transparent hover:border-3 hover:border-white duration-150 ease-in cursor-pointer">
             <img
-              className="h-10 w-10 rounded-full object-cover"
-              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974"
-              alt=""
+              className="h-full w-full rounded-full object-cover"
+              src={user?.photoURL}
+              alt="user.name"
             />
           </li>
           <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
@@ -36,9 +37,12 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
-            <Link to="/login">Login</Link>
-          </li>
+          <Link
+            to="/login"
+            className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]"
+          >
+            Login
+          </Link>
           <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
             <Link to="/register">Register</Link>
           </li>

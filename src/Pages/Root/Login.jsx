@@ -1,10 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEnvelope, FaLock, FaMagic } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
+import axios from "axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { setLoading, GoogleSignIn } = useContext(AuthContext);
+
+  const handleGoogleLogin = () => {
+    setLoading(true);
+    GoogleSignIn()
+      .then(async (result) => {
+        const user = result.user;
+
+        const saveUser = {
+          name: user.displayName,
+          email: user.email,
+          imageUrl: user.photoURL,
+          role: "worker",
+        };
+
+        try {
+          const res = await axios.post("http://localhost:3000/users", saveUser);
+          console.log("User saved:", res.data);
+          navigate(location?.state ? location.state : "/");
+          setLoading(false);
+        } catch (error) {
+          console.error("Error saving user:", error);
+        }
+      })
+      .catch(console.error);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,7 +46,6 @@ export default function LoginPage() {
   return (
     <div className="bg-[#20292b] min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-sm bg-[#2b373a] shadow-xl rounded-xl p-6 text-white">
-        
         {/* Header */}
         <div className="text-center mb-6">
           <FaMagic className="mx-auto h-10 w-10 text-blue-400" />
@@ -27,7 +57,6 @@ export default function LoginPage() {
 
         {/* Form */}
         <form onSubmit={handleLogin} className="grid gap-4">
-          
           {/* Email */}
           <div className="grid gap-1">
             <label className="text-sm font-medium flex items-center gap-2">
@@ -76,13 +105,20 @@ export default function LoginPage() {
             Log in
           </button>
 
-          {/* Google disabled */}
-          <button
-            disabled
-            className="w-full bg-gray-600 text-white p-2 rounded-lg opacity-50 cursor-not-allowed"
-          >
-            Log in with Google
-          </button>
+          <div className="mt-4">
+            <button
+              onClick={handleGoogleLogin}
+              type="button"
+              className="w-full flex items-center justify-center gap-3 bg-white text-black p-2 rounded-lg hover:bg-gray-200 transition"
+            >
+              <img
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                alt="Google"
+                className="w-5 h-5"
+              />
+              Continue with Google
+            </button>
+          </div>
         </form>
 
         {/* Bottom Link */}
