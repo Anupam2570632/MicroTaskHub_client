@@ -3,6 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCoinsLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +11,15 @@ const Navbar = () => {
   const handleHamburgerClick = () => {
     setIsOpen((prev) => !prev);
   };
-  const { user } = useContext(AuthContext);
-  console.log(user?.photoURL);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Sign out successfully");
+      })
+      .catch();
+  };
 
   const links = (
     <>
@@ -31,7 +39,10 @@ const Navbar = () => {
               alt="user.name"
             />
           </li>
-          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+          <li
+            onClick={handleLogOut}
+            className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]"
+          >
             Log Out
           </li>
         </>

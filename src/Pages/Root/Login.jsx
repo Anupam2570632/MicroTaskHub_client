@@ -3,6 +3,7 @@ import { FaEnvelope, FaLock, FaMagic } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ export default function LoginPage() {
         try {
           const res = await axios.post("http://localhost:3000/users", saveUser);
           console.log("User saved:", res.data);
+          toast.success("Login Success!");
           navigate(location?.state ? location.state : "/");
           setLoading(false);
         } catch (error) {
