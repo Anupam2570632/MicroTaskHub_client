@@ -10,8 +10,9 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+  console.log(location);
 
-  const { setLoading, GoogleSignIn } = useContext(AuthContext);
+  const { logIn, setLoading, GoogleSignIn } = useContext(AuthContext);
 
   const handleGoogleLogin = () => {
     setLoading(true);
@@ -41,8 +42,19 @@ export default function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Login Data:", { email, password });
-    alert("Login Successful! (Check console)");
+    setLoading(true);
+    logIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success("Login successfully!");
+        navigate(location?.state ? location.state : "/");
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast.error("Login Failed!");
+        console.error(err.message);
+        setLoading(false);
+      });
   };
 
   return (

@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaUser, FaImage, FaEnvelope, FaLock, FaUserTag } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function RegisterForm() {
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -31,7 +36,9 @@ export default function RegisterForm() {
     setUploading(true);
     try {
       const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY_IMGBB}`,
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_API_KEY_IMGBB
+        }`,
         { method: "POST", body: formData }
       );
 
@@ -45,21 +52,50 @@ export default function RegisterForm() {
       setUploading(false);
     }
   };
+  const onSubmit = async (data) => {
+    const toastId = toast.loading("Creating your account...");
 
-  const onSubmit = (data) => {
-    const finalData = { ...data, profileImage: uploadedImageUrl || "" };
-    console.log("Form Data:", finalData);
-    alert("Form submitted! Check console for data.");
+    try {
+      const fbUser = await createUser(
+        data.email,
+        data.password,
+        data.fullName,
+        data.uploadedImageUrl 
+      );
 
-    reset();
-    setPreview(null);
-    setUploadedImageUrl(null);
+      // Prepare final user data WITHOUT PASSWORD
+      const finalData = {
+        fullName: data.fullName,
+        email: data.email,
+        role: data.role,
+        profileImage: uploadedImageUrl || "",
+      };
+
+      // Save user in your backend
+      await axios.post("http://localhost:3000/register", finalData);
+
+      toast.success("Account created successfully!", { id: toastId });
+
+      reset();
+      setPreview(null);
+      setUploadedImageUrl(null);
+
+      // Redirect to login page
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Something went wrong!",
+        { id: toastId }
+      );
+    }
   };
 
   return (
     <div className="bg-[#20292b] flex items-center justify-center min-h-screen">
       <div className="w-full max-w-3xl bg-[#2b373a] shadow-md rounded-xl p-6 text-white">
-        
         {/* Header */}
         <h2 className="text-xl font-semibold mb-1 text-center">
           Create an Account
@@ -71,7 +107,6 @@ export default function RegisterForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* 2x2 Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
             {/* Full Name */}
             <div>
               <label className="font-medium flex items-center gap-2">
@@ -84,7 +119,9 @@ export default function RegisterForm() {
                 placeholder="Enter your full name"
               />
               {errors.fullName && (
-                <p className="text-red-500 text-sm">{errors.fullName.message}</p>
+                <p className="text-red-500 text-sm">
+                  {errors.fullName.message}
+                </p>
               )}
             </div>
 
@@ -119,7 +156,9 @@ export default function RegisterForm() {
                 placeholder="Enter your password"
               />
               {errors.password && (
-                <p className="text-red-500 text-sm">{errors.password.message}</p>
+                <p className="text-red-500 text-sm">
+                  {errors.password.message}
+                </p>
               )}
             </div>
 
@@ -150,7 +189,11 @@ export default function RegisterForm() {
 
             <div className="w-40 h-40 border rounded-md overflow-hidden bg-gray-200 mb-3">
               {preview ? (
-                <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="w-full h-full object-cover"
+                />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-500">
                   No Image Selected

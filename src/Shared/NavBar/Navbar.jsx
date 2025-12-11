@@ -54,12 +54,20 @@ const Navbar = () => {
           >
             Login
           </Link>
-          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
-            <Link to="/register">Register</Link>
-          </li>
-          <li className="py-3 px-4 font-bold text-nowrap hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
+          <Link
+            to="/register"
+            className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]"
+          >
+            Register
+          </Link>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-3 px-4 font-bold text-nowrap hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]"
+          >
             Watch Demo
-          </li>
+          </a>
         </>
       )}
     </>
