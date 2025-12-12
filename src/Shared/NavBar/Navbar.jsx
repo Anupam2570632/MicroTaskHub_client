@@ -4,6 +4,8 @@ import { RiCoinsLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import toast from "react-hot-toast";
+import useUsers from "../../hooks/useUsers";
+import LoadingPage from "../../Components/Loader/LoadingPage";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,17 +22,24 @@ const Navbar = () => {
       })
       .catch();
   };
+  const { serverUser, loading, error } = useUsers(user?.email);
+
+  if (loading) return <LoadingPage />;
+  if (error) return <p>Error loading user.</p>;
 
   const links = (
     <>
       {user ? (
         <>
-          <li className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]">
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          <Link
+            to="/dashboard"
+            className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]"
+          >
+            Dashboard
+          </Link>
           <li className="flex items-center justify-center gap-2 py-2 px-3">
             <RiCoinsLine className="text-2xl" />
-            <div>0</div>
+            <div>{serverUser[0]?.coins}</div>
           </li>
           <li className="h-12 w-12 rounded-full border-3 border-transparent hover:border-3 hover:border-white duration-150 ease-in cursor-pointer">
             <img

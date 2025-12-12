@@ -56,11 +56,11 @@ export default function RegisterForm() {
     const toastId = toast.loading("Creating your account...");
 
     try {
-      const fbUser = await createUser(
+      await createUser(
         data.email,
         data.password,
         data.fullName,
-        data.uploadedImageUrl 
+        uploadedImageUrl
       );
 
       // Prepare final user data WITHOUT PASSWORD
