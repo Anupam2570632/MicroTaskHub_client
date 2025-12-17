@@ -15,8 +15,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(user);
-
   const googleProvider = new GoogleAuthProvider();
   const GoogleSignIn = () => {
     setLoading(true);
@@ -26,7 +24,7 @@ const AuthProvider = ({ children }) => {
   const createUser = async (email, password, name, imageURL) => {
     setLoading(true);
 
-    console.log(imageURL)
+    console.log(imageURL);
 
     try {
       // Step 1: Create account

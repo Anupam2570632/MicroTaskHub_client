@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   FaBell,
   FaListCheck,
@@ -6,39 +6,104 @@ import {
   FaRobot,
   FaStar,
   FaHouseMedical,
+  FaBook,
+  FaMoneyBill,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
+import useUsers from "../../hooks/useUsers";
+import LoadingPage from "../../Components/Loader/LoadingPage";
 
 export default function DashboardSidebar() {
-  // const [active, setActive] = useState("/dashboard");
-  const [active, setActive] = useState(window.location.pathname);
+  const { user, loading } = useContext(AuthContext);
+  const location = useLocation();
+  const [active, setActive] = useState(location.pathname);
 
+  useEffect(() => {
+    setActive(location.pathname);
+  }, [location.pathname]);
 
-  console.log(active)
+  const navConfig = {
+    Admin: [
+      {
+        href: "/dashboard",
+        icon: <FaHouseMedical />,
+        label: "Dashboard",
+      },
+      {
+        href: "/dashboard/allTasks",
+        icon: <FaListCheck />,
+        label: "All Tasks",
+      },
+      {
+        href: "/dashboard/leaderboard",
+        icon: <FaTrophy />,
+        label: "Leaderboard",
+      },
+      {
+        href: "/dashboard/withdrawalRequest",
+        icon: <FaMoneyBill />,
+        label: "Withdrawal Requests",
+      },
+    ],
 
-  const navItems = [
-    { href: "/dashboard", icon: <FaHouseMedical />, label: "Dashboard" },
-    {
-      href: "/dashboard/allTasks",
-      icon: <FaListCheck />,
-      label: "Available Tasks",
-      badge: 5,
-    },
-    {
-      href: "/dashboard/leaderboard",
-      icon: <FaTrophy />,
-      label: "Leaderboard",
-    },
-    {
-      href: "/dashboard/task-assistant",
-      icon: <FaRobot />,
-      label: "Task Assistant",
-    },
-  ];
+    Worker: [
+      {
+        href: "/dashboard",
+        icon: <FaHouseMedical />,
+        label: "Dashboard",
+      },
+      {
+        href: "/dashboard/allTasks",
+        icon: <FaListCheck />,
+        label: "Available Tasks",
+        badge: 5,
+      },
+      {
+        href: "/dashboard/leaderboard",
+        icon: <FaTrophy />,
+        label: "Leaderboard",
+      },
+      {
+        href: "/dashboard/task-assistant",
+        icon: <FaRobot />,
+        label: "Task Assistant",
+      },
+    ],
+
+    TaskCreator: [
+      {
+        href: "/dashboard",
+        icon: <FaHouseMedical />,
+        label: "Dashboard",
+      },
+      {
+        href: "/dashboard/addTask",
+        icon: <FaBook />,
+        label: "Add Task",
+      },
+      {
+        href: "/dashboard/allTasks",
+        icon: <FaListCheck />,
+        label: "My Tasks",
+      },
+      {
+        href: "/dashboard/withdrawalRequest",
+        icon: <FaMoneyBill />,
+        label: "Withdraw Earnings",
+      },
+    ],
+  };
+
+  const { serverUser, loading: userLoading, error } = useUsers(user?.email);
+
+  if (loading || userLoading) return <LoadingPage />;
+  if (error) return <p>Error loading user.</p>;
+  const navItems = navConfig[serverUser[0]?.role] || [];
 
   return (
     <aside className="hidden md:flex flex-col w-full bg-blue-500/30">
-      {/* Header */}
+      {/* ================= HEADER ================= */}
       <div className="flex items-center h-[60px] border-b px-4">
         <div className="flex items-center gap-2 font-semibold text-blue-600 text-lg">
           <FaStar className="text-yellow-500 text-xl" />
@@ -47,27 +112,27 @@ export default function DashboardSidebar() {
 
         <button
           className="ml-auto h-8 w-8 flex items-center justify-center 
-            border rounded-md bg-white shadow-sm hover:bg-gray-100"
+          border rounded-md bg-white shadow-sm hover:bg-gray-100"
         >
           <FaBell className="text-gray-600 text-sm" />
         </button>
       </div>
 
-      {/* Navigation */}
+      {/* ================= NAVIGATION ================= */}
       <div className="flex-1 overflow-y-auto py-4 px-2">
         <nav className="grid gap-2 text-sm font-medium">
           {navItems.map((item) => (
             <Link
+              key={item.href}
               to={item.href}
-              key={item.label}
               onClick={() => setActive(item.href)}
               className={`
-                flex items-center gap-3 px-3 py-2 rounded-lg w-full text-left 
+                flex items-center gap-3 px-3 py-2 rounded-lg w-full 
                 transition-all
                 ${
                   active === item.href
                     ? "bg-gray-200 text-blue-600 font-semibold"
-                    : "text-gray-600 hover:text-blue-500"
+                    : "text-gray-600 hover:text-blue-500 hover:bg-gray-100"
                 }
               `}
             >
@@ -77,9 +142,9 @@ export default function DashboardSidebar() {
               {item.badge && (
                 <span
                   className="
-                  ml-auto bg-blue-600 text-white text-xs 
-                  h-6 w-6 rounded-full flex items-center justify-center
-                "
+                    ml-auto bg-blue-600 text-white text-xs 
+                    h-6 w-6 rounded-full flex items-center justify-center
+                  "
                 >
                   {item.badge}
                 </span>

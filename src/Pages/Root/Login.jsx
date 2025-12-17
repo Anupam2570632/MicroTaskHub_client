@@ -10,7 +10,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const { logIn, setLoading, GoogleSignIn } = useContext(AuthContext);
 
@@ -24,7 +23,7 @@ export default function LoginPage() {
           name: user.displayName,
           email: user.email,
           imageUrl: user.photoURL,
-          role: "worker",
+          role: "Worker",
         };
 
         try {
