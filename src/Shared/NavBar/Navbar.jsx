@@ -22,9 +22,9 @@ const Navbar = () => {
       })
       .catch();
   };
-  const { serverUser, error } = useUsers(user?.email);
+  const { serverUser,loading:loadUser, error } = useUsers(user?.email);
 
-  if (loading) return <LoadingPage />;
+  if (loading || loadUser) return <LoadingPage />;
   if (error) return <p>Error loading user.</p>;
 
   const links = (

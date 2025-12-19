@@ -78,7 +78,7 @@ const AddTask = () => {
     }
   };
 
-  if (loadUser) return <LoadingPage />;
+  if (loadUser || loading) return <LoadingPage />;
   if (error) return <p>Error loading user.</p>;
 
   return (
