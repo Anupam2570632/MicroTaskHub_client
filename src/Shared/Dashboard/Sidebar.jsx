@@ -107,7 +107,7 @@ export default function DashboardSidebar() {
       <div className="flex items-center h-[60px] border-b px-4">
         <div className="flex items-center gap-2 font-semibold text-blue-600 text-lg">
           <FaStar className="text-yellow-500 text-xl" />
-          TaskSpark
+          MicroTaskHub
         </div>
 
         <button
