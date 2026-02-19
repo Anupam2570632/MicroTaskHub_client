@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaCoins, FaCheckCircle, FaBolt } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
+import useUsers from "../../hooks/useUsers";
+import LoadingPage from "../../Components/Loader/LoadingPage";
 
 export default function DashboardHome() {
+  const { user, loading } = useContext(AuthContext);
+  const { serverUser, loading: loadUser } = useUsers(user?.email);
+
+  if (loading || loadUser) return <LoadingPage />;
+
   return (
     <div className="p-4">
       {/* Title */}
@@ -16,7 +24,7 @@ export default function DashboardHome() {
             <FaCoins className="h-5 w-5 text-gray-500" />
           </div>
           <div>
-            <div className="text-2xl font-bold">2,450 Coins</div>
+            <div className="text-2xl font-bold">{serverUser[0]?.coins} Coins</div>
             <p className="text-xs text-gray-500">Equivalent to $24.50</p>
           </div>
         </div>

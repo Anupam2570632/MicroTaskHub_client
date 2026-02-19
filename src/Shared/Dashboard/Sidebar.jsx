@@ -8,6 +8,7 @@ import {
   FaHouseMedical,
   FaBook,
   FaMoneyBill,
+  FaUser,
 } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
@@ -25,6 +26,11 @@ export default function DashboardSidebar() {
 
   const navConfig = {
     Admin: [
+      {
+        href:'/dashboard/profile',
+        icon:<FaUser/>,
+        label:"Profile",
+      },
       {
         href: "/dashboard",
         icon: <FaHouseMedical />,
@@ -49,6 +55,11 @@ export default function DashboardSidebar() {
 
     Worker: [
       {
+        href:'/dashboard/profile',
+        icon:<FaUser/>,
+        label:"Profile",
+      },
+      {
         href: "/dashboard",
         icon: <FaHouseMedical />,
         label: "Dashboard",
@@ -72,6 +83,11 @@ export default function DashboardSidebar() {
     ],
 
     TaskCreator: [
+      {
+        href:'/dashboard/profile',
+        icon:<FaUser/>,
+        label:"Profile",
+      },
       {
         href: "/dashboard",
         icon: <FaHouseMedical />,
@@ -99,7 +115,7 @@ export default function DashboardSidebar() {
 
   if (loading || userLoading) return <LoadingPage />;
   if (error) return <p>Error loading user.</p>;
-  const navItems = navConfig[serverUser[0]?.role] || [];
+  const navItems = navConfig[serverUser?.role] || [];
 
   return (
     <aside className="hidden md:flex flex-col w-full bg-blue-500/30">
@@ -107,7 +123,7 @@ export default function DashboardSidebar() {
       <div className="flex items-center h-[60px] border-b px-4">
         <div className="flex items-center gap-2 font-semibold text-blue-600 text-lg">
           <FaStar className="text-yellow-500 text-xl" />
-          MicroTaskHub
+         <Link to="/">MicroTaskHub</Link>
         </div>
 
         <button

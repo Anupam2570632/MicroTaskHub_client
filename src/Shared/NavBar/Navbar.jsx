@@ -32,14 +32,14 @@ const Navbar = () => {
       {user ? (
         <>
           <Link
-            to="/dashboard"
+            to="/dashboard/profile"
             className="py-3 px-4 font-bold hover:bg-[#2b373a] duration-200 ease-in cursor-pointer rounded-sm hover:text-[#acb3b6]"
           >
             Dashboard
           </Link>
           <li className="flex items-center justify-center gap-2 py-2 px-3">
             <RiCoinsLine className="text-2xl" />
-            <div>{serverUser[0]?.coins}</div>
+            <div>{serverUser?.coins}</div>
           </li>
           <li className="h-12 w-12 rounded-full border-3 border-transparent hover:border-3 hover:border-white duration-150 ease-in cursor-pointer">
             <img
