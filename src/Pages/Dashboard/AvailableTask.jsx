@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const AvailableTask = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   // Fetch tasks from backend
   useEffect(() => {
@@ -15,7 +14,7 @@ const AvailableTask = () => {
         const res = await axios.get("http://localhost:3000/getTasks");
         // Filter tasks with quantity > 0
         const availableTasks = res.data.filter(
-          (task) => task.task_quantity > 0
+          (task) => task.task_quantity > 0,
         );
         setTasks(availableTasks);
       } catch (err) {
@@ -75,15 +74,11 @@ const AvailableTask = () => {
                 </div>
 
                 {/* Smaller Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation(); // prevent parent click
-                    navigate(`/task-details/${task._id}`);
-                  }}
-                  className="w-full bg-white text-black text-sm font-semibold py-2 rounded hover:bg-gray-200 transition"
-                >
-                  View Details
-                </button>
+                <Link to={`/dashboard/taskDetails/${task._id}`}>
+                  <h1 className="w-full bg-white text-black text-sm text-center font-semibold py-2 rounded hover:bg-gray-200 transition">
+                    View Details
+                  </h1>
+                </Link>
               </div>
             </div>
           ))}
