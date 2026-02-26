@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
+import toast from "react-hot-toast";
 
 const TaskDetails = () => {
   const { id } = useParams();
@@ -38,15 +39,16 @@ const TaskDetails = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/submissions",
+        "http://localhost:3000/submissions",
         submissionData
       );
 
       if (res.data.insertedId) {
-        alert("Submission Successful ✅");
+        toast.success("Submission Successful");
         setSubmissionDetails("");
       }
     } catch (error) {
+      toast.error(error.message)
       console.log(error);
     }
   };

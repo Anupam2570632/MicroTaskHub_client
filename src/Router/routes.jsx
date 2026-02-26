@@ -9,6 +9,7 @@ import TasksPage from "../Pages/Dashboard/AvailableTask";
 import AddTask from "../Pages/Dashboard/AddTask";
 import Profile from "../Pages/Dashboard/Profile";
 import TaskDetails from "../Pages/Dashboard/TaskDetails";
+import MySubmission from "../Pages/Dashboard/MySubmission";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <TaskDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/mySubmission",
+        element: (
+          <PrivateRoute>
+            <MySubmission />
           </PrivateRoute>
         ),
       },

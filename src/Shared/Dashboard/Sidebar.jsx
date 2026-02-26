@@ -9,11 +9,13 @@ import {
   FaBook,
   FaMoneyBill,
   FaUser,
+  FaDownload,
 } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import useUsers from "../../hooks/useUsers";
 import LoadingPage from "../../Components/Loader/LoadingPage";
+import { BiMoney } from "react-icons/bi";
 
 export default function DashboardSidebar() {
   const { user, loading } = useContext(AuthContext);
@@ -27,9 +29,9 @@ export default function DashboardSidebar() {
   const navConfig = {
     Admin: [
       {
-        href:'/dashboard/profile',
-        icon:<FaUser/>,
-        label:"Profile",
+        href: "/dashboard/profile",
+        icon: <FaUser />,
+        label: "Profile",
       },
       {
         href: "/dashboard",
@@ -42,22 +44,22 @@ export default function DashboardSidebar() {
         label: "All Tasks",
       },
       {
-        href: "/dashboard/leaderboard",
-        icon: <FaTrophy />,
-        label: "Leaderboard",
-      },
-      {
         href: "/dashboard/withdrawalRequest",
         icon: <FaMoneyBill />,
         label: "Withdrawal Requests",
+      },
+      {
+        href: "/dashboard/withdrawMoney",
+        icon: <BiMoney />,
+        label: "Withdraw Money",
       },
     ],
 
     Worker: [
       {
-        href:'/dashboard/profile',
-        icon:<FaUser/>,
-        label:"Profile",
+        href: "/dashboard/profile",
+        icon: <FaUser />,
+        label: "Profile",
       },
       {
         href: "/dashboard",
@@ -76,17 +78,17 @@ export default function DashboardSidebar() {
         label: "Leaderboard",
       },
       {
-        href: "/dashboard/task-assistant",
-        icon: <FaRobot />,
-        label: "Task Assistant",
+        href: "/dashboard/mySubmission",
+        icon: <FaDownload />,
+        label: "My Submission",
       },
     ],
 
     TaskCreator: [
       {
-        href:'/dashboard/profile',
-        icon:<FaUser/>,
-        label:"Profile",
+        href: "/dashboard/profile",
+        icon: <FaUser />,
+        label: "Profile",
       },
       {
         href: "/dashboard",
@@ -123,7 +125,7 @@ export default function DashboardSidebar() {
       <div className="flex items-center h-[60px] border-b px-4">
         <div className="flex items-center gap-2 font-semibold text-blue-600 text-lg">
           <FaStar className="text-yellow-500 text-xl" />
-         <Link to="/">MicroTaskHub</Link>
+          <Link to="/">MicroTaskHub</Link>
         </div>
 
         <button
