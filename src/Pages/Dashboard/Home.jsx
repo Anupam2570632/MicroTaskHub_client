@@ -3,6 +3,7 @@ import { FaCoins, FaCheckCircle, FaBolt } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import useUsers from "../../hooks/useUsers";
 import LoadingPage from "../../Components/Loader/LoadingPage";
+import TaskReview from "../../Components/dashboard/Taksreview";
 
 export default function DashboardHome() {
   const { user, loading } = useContext(AuthContext);
@@ -10,12 +11,12 @@ export default function DashboardHome() {
 
   if (loading || loadUser) return <LoadingPage />;
 
+  const role = serverUser.role;
+
   return (
     <div className="p-4">
-      {/* Title */}
       <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
 
-      {/* Top Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {/* Card 1 */}
         <div className="bg-white/40 hover:shadow-xl hover:scale-[1.01] duration-200 shadow-md rounded-lg p-4 border">
@@ -24,8 +25,12 @@ export default function DashboardHome() {
             <FaCoins className="h-5 w-5 text-gray-500" />
           </div>
           <div>
-            <div className="text-2xl font-bold">{serverUser[0]?.coins} Coins</div>
-            <p className="text-xs text-gray-500">Equivalent to $24.50</p>
+            <div className="text-2xl font-bold">
+              {serverUser?.coins || 0} Coins
+            </div>
+            <p className="text-xs text-gray-500">
+              Equivalent to ${(serverUser?.coins || 0) * 0.1}
+            </p>
           </div>
         </div>
 
@@ -63,11 +68,9 @@ export default function DashboardHome() {
               An overview of your latest task completions and earnings.
             </p>
           </div>
-          <div>
-            <p>Activity feed coming soon...</p>
-          </div>
         </div>
       </div>
+      <div>{role == "TaskCreator" ? <TaskReview /> : ""}</div>
     </div>
   );
 }

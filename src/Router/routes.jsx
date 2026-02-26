@@ -10,6 +10,7 @@ import AddTask from "../Pages/Dashboard/AddTask";
 import Profile from "../Pages/Dashboard/Profile";
 import TaskDetails from "../Pages/Dashboard/TaskDetails";
 import MySubmission from "../Pages/Dashboard/MySubmission";
+import Withdraw from "../Pages/Dashboard/Withdrawal";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MySubmission />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/withdrawalMoney",
+        element: (
+          <PrivateRoute>
+            <Withdraw />
           </PrivateRoute>
         ),
       },

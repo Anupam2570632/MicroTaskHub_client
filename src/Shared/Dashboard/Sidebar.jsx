@@ -48,11 +48,11 @@ export default function DashboardSidebar() {
         icon: <FaMoneyBill />,
         label: "Withdrawal Requests",
       },
-      {
-        href: "/dashboard/withdrawMoney",
-        icon: <BiMoney />,
-        label: "Withdraw Money",
-      },
+      // {
+      //   href: "/dashboard/leaderboard",
+      //   icon: <FaTrophy />,
+      //   label: "Leaderboard",
+      // },
     ],
 
     Worker: [
@@ -73,14 +73,14 @@ export default function DashboardSidebar() {
         badge: 5,
       },
       {
-        href: "/dashboard/leaderboard",
-        icon: <FaTrophy />,
-        label: "Leaderboard",
-      },
-      {
         href: "/dashboard/mySubmission",
         icon: <FaDownload />,
         label: "My Submission",
+      },
+      {
+        href: "/dashboard/withdrawalMoney",
+        icon: <BiMoney />,
+        label: "Withdrawal Money",
       },
     ],
 
