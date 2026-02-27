@@ -11,6 +11,7 @@ import Profile from "../Pages/Dashboard/Profile";
 import TaskDetails from "../Pages/Dashboard/TaskDetails";
 import MySubmission from "../Pages/Dashboard/MySubmission";
 import Withdraw from "../Pages/Dashboard/Withdrawal";
+import AdminWithdrawRequests from "../Pages/Dashboard/WithdrawRequests";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Withdraw />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/withdrawalRequest",
+        element: (
+          <PrivateRoute>
+            <AdminWithdrawRequests />
           </PrivateRoute>
         ),
       },
