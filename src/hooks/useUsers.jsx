@@ -11,7 +11,9 @@ const useUsers = (email) => {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/user?email=${email}`);
+        const res = await axios.get(
+          `http://localhost:3000/user?email=${email}`,
+        );
         setUser(res.data);
       } catch (err) {
         setError(err);

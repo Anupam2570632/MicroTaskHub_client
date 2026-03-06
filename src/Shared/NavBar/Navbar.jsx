@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleHamburgerClick = () => {
     setIsOpen((prev) => !prev);
   };
-  const { user, loading, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -22,9 +22,9 @@ const Navbar = () => {
       })
       .catch();
   };
-  const { serverUser,loading:loadUser, error } = useUsers(user?.email);
+  const { serverUser, error } = useUsers(user?.email);
 
-  if (loading || loadUser) return <LoadingPage />;
+  // if (loading || loadUser) return <LoadingPage />;
   if (error) return <p>Error loading user.</p>;
 
   const links = (
