@@ -11,7 +11,6 @@ const AddTask = () => {
   const { user } = useContext(AuthContext);
   const { serverUser, loading: loadUser, error } = useUsers(user?.email);
 
-  console.log(serverUser);
 
   const {
     register,
@@ -82,15 +81,15 @@ const AddTask = () => {
   if (error) return <p>Error loading user.</p>;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <Toaster position="top-center" />
 
-      <div className="w-full max-w-6xl bg-white rounded-xl shadow-lg px-6 py-6">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Task</h2>
+      <div className="w-full max-w-6xl bg-[#2c393c] rounded-xl shadow-lg px-6 py-6">
+        <h2 className="text-2xl font-bold mb-4 text-[#acb3b6]">Add New Task</h2>
 
-        <div className="mb-4 px-4 py-3 bg-blue-50 text-blue-700 rounded-md flex justify-between text-base">
+        <div className="mb-4 px-4 py-3 bg-gray-800 text-[#acb3b6] rounded-md flex justify-between text-base">
           <span>Available Balance</span>
-          <span className="font-semibold">{serverUser[0]?.coins} Coins</span>
+          <span className="font-semibold">{serverUser?.coins} Coins</span>
         </div>
 
         <form
@@ -99,94 +98,94 @@ const AddTask = () => {
         >
           {/* Task Title */}
           <div>
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Task Title
             </label>
             <input
               {...register("task_title", { required: true })}
               placeholder="e.g. Facebook post engagement"
-              className="w-full px-4 py-2 border rounded-md text-base focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Task Quantity */}
           <div>
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Task Quantity
             </label>
             <input
               type="number"
               {...register("task_quantity", { required: true, min: 1 })}
               placeholder="e.g. 100"
-              className="w-full px-4 py-2 border rounded-md text-base"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base"
             />
           </div>
 
           {/* Payable Amount */}
           <div>
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Payable Amount (Coins)
             </label>
             <input
               type="number"
               {...register("payable_amount", { required: true })}
               placeholder="e.g. 2"
-              className="w-full px-4 py-2 border rounded-md text-base"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base"
             />
           </div>
 
           {/* Task Detail */}
           <div className="md:col-span-2 lg:col-span-3">
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Task Detail
             </label>
             <textarea
               {...register("task_detail", { required: true })}
               placeholder="Describe what users need to do to complete this task"
               rows="2"
-              className="w-full px-4 py-2 border rounded-md text-base resize-none"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base resize-none"
             />
           </div>
 
           {/* Completion Date */}
           <div>
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Completion Date
             </label>
             <input
               type="date"
               {...register("completion_date", { required: true })}
-              className="w-full px-4 py-2 border rounded-md text-base"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base"
             />
           </div>
 
           {/* Submission Info */}
           <div>
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Submission Info
             </label>
             <input
               {...register("submission_info", { required: true })}
               placeholder="e.g. Screenshot link or proof"
-              className="w-full px-4 py-2 border rounded-md text-base"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base"
             />
           </div>
 
           {/* Task Image */}
           <div>
-            <label className="block text-sm font-semibold mb-1">
+            <label className="block text-sm text-[#e9eaea] font-semibold mb-1">
               Task Image
             </label>
             <input
               type="file"
               {...register("task_image", { required: true })}
-              className="text-base bg-gray-100 p-2 rounded-sm"
+              className="w-full bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 text-base"
             />
           </div>
 
           {/* Total Payable */}
           {taskQuantity && payableAmount && (
-            <div className="lg:col-span-3 text-right text-sm font-semibold text-gray-600">
+            <div className="lg:col-span-3 text-right text-sm font-semibold text-[#e9eaea]">
               Total Payable: {taskQuantity * payableAmount} Coins
             </div>
           )}
@@ -196,12 +195,14 @@ const AddTask = () => {
             <button
               disabled={loading}
               className="
-      bg-blue-600 text-white
+      bg-black/70 text-white
       px-6 py-2
       rounded-md
       text-sm font-semibold
-      hover:bg-blue-700
+      hover:bg-black/20
+      cursor-pointer
       transition
+      duration-200
       disabled:bg-gray-400
 
       w-full

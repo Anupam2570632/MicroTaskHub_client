@@ -8,8 +8,7 @@ const Profile = () => {
 
 
   const { serverUser, loading: loadUser, error } = useUsers(user?.email);
-  console.log(serverUser)
-
+  
   if (loading || loadUser) return <LoadingPage />;
 
   if (error) return <p>Error loading user.</p>;

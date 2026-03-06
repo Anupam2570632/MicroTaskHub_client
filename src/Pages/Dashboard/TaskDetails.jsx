@@ -58,7 +58,7 @@ const TaskDetails = () => {
       <h2 className="text-3xl font-bold mb-6">Task Details</h2>
 
       {/* Task Info Section */}
-      <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
+      <div className=" shadow-lg rounded-xl p-6 mb-8">
         <img
           src={task.task_image_url}
           alt="Task"
