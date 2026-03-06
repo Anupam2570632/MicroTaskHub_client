@@ -19,10 +19,10 @@ const MySubmission = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">My Submissions</h2>
+      <h2 className="text-2xl text-[#acb3b6] font-bold mb-4">My Submissions</h2>
 
       <div className="overflow-x-auto">
-        <table className="table w-full border text-center">
+        <table className="table bg-[#2c393c] w-full border text-center">
           <thead>
             <tr className="bg-gray-200">
               <th>Task Title</th>
@@ -32,7 +32,7 @@ const MySubmission = () => {
               <th>Date</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-[#acb3b6]">
             {submissions.map((item) => (
               <tr key={item._id}>
                 <td>{item.task_title}</td>

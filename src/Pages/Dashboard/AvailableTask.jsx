@@ -29,7 +29,7 @@ const AvailableTask = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-transparent p-4">
       <Toaster position="top-center" />
       <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
         Available Tasks

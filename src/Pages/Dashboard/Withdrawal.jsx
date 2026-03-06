@@ -49,21 +49,20 @@ export default function Withdraw() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white shadow rounded">
-      <h2 className="text-xl font-bold mb-4">Withdraw</h2>
+    <div className="p-6 max-w-md mx-auto bg-[#2c393c] shadow rounded">
+      <h2 className="text-xl text-white font-bold mb-4">Withdraw</h2>
 
-      <p className="mb-2">
-        <strong>Maximum Withdraw Amount:</strong> $
-        {maxDollar}
+      <p className="mb-2 text-[#e9eaea]">
+        <strong>Maximum Withdraw Amount:</strong> ${maxDollar}
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 text-[#acb3b6]">
         {/* Coin Input */}
         <div>
           <label>Coin To Withdraw</label>
           <input
             type="number"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-[#1f2a2d] text-[#e9eaea] border-gray-600 px-4 py-2"
             value={withdrawCoin}
             onChange={handleCoinChange}
             required
@@ -75,7 +74,7 @@ export default function Withdraw() {
           <label>Withdraw Amount ($)</label>
           <input
             type="number"
-            className="input input-bordered w-full bg-gray-100"
+            className="input input-bordered w-full bg-[#1f2a2d] text-[#e9eaea] border-gray-600 px-4 py-2"
             value={withdrawAmount}
             readOnly
           />
@@ -85,11 +84,9 @@ export default function Withdraw() {
         <div>
           <label>Select Payment System</label>
           <select
-            className="select select-bordered w-full"
+            className="select select-bordered w-full bg-[#1f2a2d] text-[#e9eaea] border-gray-600 px-4 py-2"
             value={paymentSystem}
-            onChange={(e) =>
-              setPaymentSystem(e.target.value)
-            }
+            onChange={(e) => setPaymentSystem(e.target.value)}
           >
             <option>Bkash</option>
             <option>Rocket</option>
@@ -102,18 +99,16 @@ export default function Withdraw() {
           <label>Account Number</label>
           <input
             type="text"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-[#1f2a2d] text-[#e9eaea] border-gray-600 px-4 py-2"
             value={accountNumber}
-            onChange={(e) =>
-              setAccountNumber(e.target.value)
-            }
+            onChange={(e) => setAccountNumber(e.target.value)}
             required
           />
         </div>
 
         <button
           type="submit"
-          className="btn btn-primary w-full"
+          className="btn btn-primary bg-gray-600 py-2 hover:bg-gray-500 duration-200 text-[#e9eaea] rounded-md w-full"
         >
           Withdraw
         </button>
