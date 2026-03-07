@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiCrossMark, GiCrossShield, GiHamburgerMenu } from "react-icons/gi";
 import { RiCoinsLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import toast from "react-hot-toast";
 import useUsers from "../../hooks/useUsers";
-import LoadingPage from "../../Components/Loader/LoadingPage";
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,13 +88,20 @@ const Navbar = () => {
         <h1 className="text-xl font-bold ">MicroTaskHub</h1>
 
         <div className="md:hidden relative">
-          <GiHamburgerMenu
-            onClick={handleHamburgerClick}
-            className="text-2xl  cursor-pointer"
-          />
+          {isOpen ? (
+            <RxCross2
+              onClick={handleHamburgerClick}
+              className="text-2xl  cursor-pointer"
+            />
+          ) : (
+            <GiHamburgerMenu
+              onClick={handleHamburgerClick}
+              className="text-2xl  cursor-pointer"
+            />
+          )}
 
           <ul
-            className={`absolute right-0 p-2 mt-2 bg-blue-500  items-center rounded-md shadow-md flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out ${
+            className={`absolute right-0 p-2 mt-2 bg-[#2b373a]  items-center rounded-md shadow-md flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out ${
               isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >

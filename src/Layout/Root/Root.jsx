@@ -10,7 +10,7 @@ const Root = () => {
   return (
     <div>
       <Navbar />
-      <div className="mt-[58px]">
+      <div className="mt-11 md:mt-[58px] ">
         <HeroSection />
       </div>
 

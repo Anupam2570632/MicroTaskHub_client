@@ -119,7 +119,7 @@ export default function DashboardSidebar({ onLinkClick }) {
       <div className="flex items-center h-[60px] border-b px-4">
         <div className="flex items-center gap-2 font-semibold text-[#acb3b6] text-lg">
           <FaStar className="text-gray-500 text-xl" />
-          <Link to="/">MicroTaskHub</Link>
+          <Link to="/" className="text-[#e9eaea]">MicroTaskHub</Link>
         </div>
 
         <button

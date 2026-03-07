@@ -34,15 +34,15 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col w-full">
         
         {/* Mobile Navbar */}
-        <div className="md:hidden flex items-center p-4 bg-white shadow">
+        <div className="md:hidden flex items-center p-4 bg-[#182326] shadow">
           <button
             onClick={() => setOpen(true)}
-            className="text-xl"
+            className="text-xl text-[#e9eaea]"
           >
             <FaBars />
           </button>
 
-          <h2 className="ml-4 font-semibold">Dashboard</h2>
+          <h2 className="ml-4 font-semibold text-[#e9eaea]">Dashboard</h2>
         </div>
 
         {/* Page Content */}
