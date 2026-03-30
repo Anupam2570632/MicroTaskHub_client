@@ -12,6 +12,7 @@ import TaskDetails from "../Pages/Dashboard/TaskDetails";
 import MySubmission from "../Pages/Dashboard/MySubmission";
 import Withdraw from "../Pages/Dashboard/Withdrawal";
 import AdminWithdrawRequests from "../Pages/Dashboard/WithdrawRequests";
+import PaymentForm from "../Pages/Dashboard/Payment";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AdminWithdrawRequests />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment",
+        element: (
+          <PrivateRoute>
+            <PaymentForm />
           </PrivateRoute>
         ),
       },
