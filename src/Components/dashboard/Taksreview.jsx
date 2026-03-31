@@ -88,10 +88,23 @@ const TaskReview = () => {
           <div className="bg-white p-6 rounded w-96">
             <h3 className="text-lg font-bold mb-2">Submission Details</h3>
 
-            <p>{selectedSubmission.submission_details}</p>
+            {/* Submission Text */}
+            <p className="mb-4">{selectedSubmission.submission_details}</p>
+
+            {/* Screenshot (conditional) */}
+            {selectedSubmission.submission_image && (
+              <div className="mb-4">
+                <h1>Screenshot of task submission</h1>
+                <img
+                  src={selectedSubmission.submission_image}
+                  alt="Submission Screenshot"
+                  className="w-full rounded-lg border"
+                />
+              </div>
+            )}
 
             <button
-              className="btn btn-sm mt-4"
+              className="btn btn-sm mt-2"
               onClick={() => setSelectedSubmission(null)}
             >
               Close

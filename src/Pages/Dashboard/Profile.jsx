@@ -54,10 +54,6 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Edit Button */}
-        <button className="mt-6 w-full bg-[#20292b] text-white py-2 rounded-lg hover:bg-gray-700 transition">
-          Edit Profile
-        </button>
       </div>
     </div>
   );

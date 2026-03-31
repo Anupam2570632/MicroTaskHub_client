@@ -3,11 +3,12 @@ import axios from "axios";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import useUsers from "../../hooks/useUsers";
 import toast from "react-hot-toast";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Withdraw() {
   const { user } = useContext(AuthContext);
   const { serverUser } = useUsers(user?.email);
+  const navigate = useNavigate();
 
   const coins = serverUser?.coins || 0;
   const maxDollar = Math.floor(coins /10);
@@ -47,7 +48,7 @@ export default function Withdraw() {
 
     if (res.data.success) {
       toast.success("Withdraw Request Sent Successfully!");
-      Navigate('/dashboard/profile')
+      navigate('/dashboard/profile')
     }
   };
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import toast from "react-hot-toast";
@@ -10,6 +10,9 @@ const TaskDetails = () => {
 
   const [task, setTask] = useState({});
   const [submissionDetails, setSubmissionDetails] = useState("");
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+  const navigate = useNavigate()
 
   // Fetch Task Details
   useEffect(() => {
@@ -19,25 +22,48 @@ const TaskDetails = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
+  // Upload image to ImgBB
+  const uploadImage = async () => {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    const apiKey = import.meta.env.VITE_API_KEY_IMGBB; 
+
+    const res = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${apiKey}`,
+      formData
+    );
+
+    return res.data.data.url;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const submissionData = {
-      task_id: task._id,
-      task_title: task.task_title,
-      task_detail: task.task_detail,
-      task_img_url: task.task_image_url,
-      payable_amount: task.payable_amount,
-      worker_email: user?.email,
-      worker_name: user?.displayName,
-      submission_details: submissionDetails,
-      creator_name: task.creator_name,
-      creator_email: task.creator_email,
-      current_date: new Date(),
-      status: "pending",
-    };
-
     try {
+      let uploadedImageUrl = "";
+
+      if (imageFile) {
+        uploadedImageUrl = await uploadImage();
+        setImageUrl(uploadedImageUrl);
+      }
+
+      const submissionData = {
+        task_id: task._id,
+        task_title: task.task_title,
+        task_detail: task.task_detail,
+        task_img_url: task.task_image_url,
+        payable_amount: task.payable_amount,
+        worker_email: user?.email,
+        worker_name: user?.displayName,
+        submission_details: submissionDetails,
+        submission_image: uploadedImageUrl, 
+        creator_name: task.creator_name,
+        creator_email: task.creator_email,
+        current_date: new Date(),
+        status: "pending",
+      };
+
       const res = await axios.post(
         "http://localhost:3000/submissions",
         submissionData
@@ -46,9 +72,11 @@ const TaskDetails = () => {
       if (res.data.insertedId) {
         toast.success("Submission Successful");
         setSubmissionDetails("");
+        setImageFile(null);
+        navigate('/dashboard/mySubmission')
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
       console.log(error);
     }
   };
@@ -58,18 +86,20 @@ const TaskDetails = () => {
       <h2 className="text-3xl font-bold mb-6">Task Details</h2>
 
       {/* Task Info Section */}
-      <div className=" shadow-lg rounded-xl p-6 mb-8">
+      <div className="shadow-lg rounded-xl p-6 mb-8">
         <img
           src={task.task_image_url}
           alt="Task"
           className="w-full h-60 object-cover rounded-lg mb-4"
         />
 
-        <h3 className="text-2xl font-semibold">{task.task_title}</h3>
+        <h3 className="text-2xl font-semibold text-[#e9eaea]">
+          {task.task_title}
+        </h3>
 
-        <p className="mt-2 text-gray-600">{task.task_detail}</p>
+        <p className="mt-2 text-white">{task.task_detail}</p>
 
-        <div className="grid grid-cols-2 gap-4 mt-4">
+        <div className="grid grid-cols-2 gap-4 mt-4 text-[gray]">
           <p><strong>Creator:</strong> {task.creator_name}</p>
           <p><strong>Creator Email:</strong> {task.creator_email}</p>
           <p><strong>Completion Date:</strong> {task.completion_date}</p>
@@ -85,12 +115,23 @@ const TaskDetails = () => {
 
         <form onSubmit={handleSubmit}>
           <textarea
-            name="submission_details"
             required
             value={submissionDetails}
             onChange={(e) => setSubmissionDetails(e.target.value)}
-            placeholder="Enter your submission details (screenshot link, username etc)"
+            placeholder="Enter your submission details"
             className="w-full p-3 border rounded-lg mb-4 h-32"
+          />
+
+          {/* Image Input */}
+          <label id="screen" className="text-red-400">Add Screenshot: </label>
+          <br />
+          <input
+          id="screen"
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files[0])}
+            className="mb-4"
+            required
           />
 
           <button
