@@ -29,7 +29,7 @@ export default function DashboardHome() {
               {serverUser?.coins || 0} Coins
             </div>
             <p className="text-xs text-gray-500">
-              Equivalent to ${(serverUser?.coins || 0) * 0.1}
+              Equivalent to {(serverUser?.coins || 0) * 0.1} Taka
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function DashboardHome() {
           </div>
           <div>
             <div className="text-2xl text-white font-bold">+82</div>
-            <p className="text-xs text-gray-500">+15% from last month</p>
+            {/* <p className="text-xs text-gray-500">+15% from last month</p> */}
           </div>
         </div>
 

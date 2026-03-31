@@ -223,21 +223,7 @@ export default function RegisterForm() {
           </button>
         </form>
 
-        {/* Google Login */}
-        <div className="mt-4">
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 bg-white text-black p-2 rounded-lg hover:bg-gray-200 transition"
-          >
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              className="w-5 h-5"
-            />
-            Continue with Google
-          </button>
-        </div>
-
+       
         {/* Login Link */}
         <p className="text-center text-sm mt-4 text-gray-300">
           Already have an account?{" "}

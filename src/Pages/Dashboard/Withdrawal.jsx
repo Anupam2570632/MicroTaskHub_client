@@ -2,13 +2,15 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Provider/AuthProvider/AuthContext";
 import useUsers from "../../hooks/useUsers";
+import toast from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 
 export default function Withdraw() {
   const { user } = useContext(AuthContext);
   const { serverUser } = useUsers(user?.email);
 
   const coins = serverUser?.coins || 0;
-  const maxDollar = Math.floor(coins / 20);
+  const maxDollar = Math.floor(coins /10);
 
   const [withdrawCoin, setWithdrawCoin] = useState(0);
   const [withdrawAmount, setWithdrawAmount] = useState(0);
@@ -18,7 +20,7 @@ export default function Withdraw() {
   const handleCoinChange = (e) => {
     const value = parseInt(e.target.value) || 0;
     setWithdrawCoin(value);
-    setWithdrawAmount((value / 20).toFixed(2));
+    setWithdrawAmount((value / 10).toFixed(2));
   };
 
   const handleSubmit = async (e) => {
@@ -44,7 +46,8 @@ export default function Withdraw() {
     );
 
     if (res.data.success) {
-      alert("Withdraw Request Sent Successfully!");
+      toast.success("Withdraw Request Sent Successfully!");
+      Navigate('/dashboard/profile')
     }
   };
 

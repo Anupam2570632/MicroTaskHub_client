@@ -24,7 +24,7 @@ const PaymentForm = () => {
 
   const handlePayment = async () => {
     try {
-      const amount = formData.coins * 1;
+      const amount = formData.coins * 0.1;
       const res = await axios.post("http://localhost:3000/create-payment", {
         email: user.email,
         amount,
@@ -117,7 +117,7 @@ const PaymentForm = () => {
           />
         </div>
 
-        <p className="mb-4">Total: {formData.coins} BDT</p>
+        <p className="mb-4">Total: {formData.coins * 0.1} BDT</p>
 
         <button
           onClick={handlePayment}

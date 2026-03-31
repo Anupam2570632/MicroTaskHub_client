@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function AdminWithdrawRequests() {
   const [withdrawRequests, setWithdrawRequests] = useState([]);
@@ -27,7 +28,7 @@ export default function AdminWithdrawRequests() {
     );
 
     if (res.data.success) {
-      alert("Payment Marked as Success!");
+      toast.success("Payment Marked as Success!");
       setWithdrawRequests(
         withdrawRequests.filter((item) => item._id !== id)
       );
@@ -36,7 +37,7 @@ export default function AdminWithdrawRequests() {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-2xl text-[3acb3b6] font-bold mb-4">
         Withdraw Requests
       </h2>
 
@@ -56,7 +57,7 @@ export default function AdminWithdrawRequests() {
 
           <tbody>
             {withdrawRequests.map((item) => (
-              <tr key={item._id}>
+              <tr className="text-[#e9eaea]" key={item._id}>
                 <td>{item.worker_name}</td>
                 <td>{item.withdraw_coin}</td>
                 <td>${item.withdraw_amount}</td>
@@ -72,7 +73,7 @@ export default function AdminWithdrawRequests() {
                     onClick={() =>
                       handlePaymentSuccess(item._id)
                     }
-                    className="btn btn-success btn-sm"
+                    className="btn btn-success btn-sm text-black bg-green-400 p-1 m-1 rounded-2xl"
                   >
                     Payment Success
                   </button>

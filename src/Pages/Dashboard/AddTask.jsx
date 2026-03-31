@@ -84,7 +84,6 @@ const AddTask = () => {
       toast.success("Task added successfully!");
       reset();
       navigate("/dashboard/allTasks");
-
     } catch (err) {
       // 🔥 BACKEND CHECK → SHOW MODAL
       if (err.response?.data?.message === "Insufficient coins") {
@@ -112,7 +111,6 @@ const AddTask = () => {
       toast.success("Task added successfully!");
       reset();
       navigate("/dashboard/allTasks");
-
     } catch {
       toast.error("Failed after payment!");
     } finally {
@@ -247,7 +245,8 @@ const AddTask = () => {
             </h2>
 
             <p className="text-[#e9eaea] mb-5">
-              You need <span className="font-semibold">{requiredCoins}</span> more coins
+              You need <span className="font-semibold">{requiredCoins}</span>{" "}
+              more coins
             </p>
 
             <div className="flex gap-3 justify-center">
@@ -255,7 +254,7 @@ const AddTask = () => {
                 onClick={() => setShowPaymentModal(false)}
                 className="bg-[#1f2a2d] text-[#e9eaea] px-4 py-2 rounded-md"
               >
-                Cancel
+                Try Again
               </button>
 
               <button
@@ -263,14 +262,6 @@ const AddTask = () => {
                 className="bg-black/70 text-white px-4 py-2 rounded-md"
               >
                 Buy Coins
-              </button>
-
-              {/* test */}
-              <button
-                onClick={handlePaymentSuccess}
-                className="bg-green-600 text-white px-4 py-2 rounded-md"
-              >
-                Paid
               </button>
             </div>
           </div>

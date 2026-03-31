@@ -7,7 +7,7 @@ export default function Dashboard() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen w-full">
+    <div className="flex min-h-screen w-full h-screen overflow-hidden">
       
       {/* Overlay */}
       {open && (
@@ -20,18 +20,20 @@ export default function Dashboard() {
       {/* Sidebar */}
       <div
         className={`
-        fixed md:static z-50
-        top-0 left-0
-        transform transition-transform duration-300
-        ${open ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0
-      `}
+          fixed md:static z-50
+          top-0 left-0
+          h-full
+          overflow-y-auto
+          transform transition-transform duration-300
+          ${open ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0
+        `}
       >
         <DashboardSidebar />
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col w-full">
+      <div className="flex-1 flex flex-col w-full h-full overflow-hidden">
         
         {/* Mobile Navbar */}
         <div className="md:hidden flex items-center p-4 bg-[#182326] shadow">
@@ -46,7 +48,7 @@ export default function Dashboard() {
         </div>
 
         {/* Page Content */}
-        <main className="flex-1 p-4 lg:p-6 bg-[#20292b]">
+        <main className="flex-1 p-4 lg:p-6 bg-[#20292b] overflow-y-auto">
           <Outlet />
         </main>
 

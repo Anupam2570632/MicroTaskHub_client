@@ -13,6 +13,8 @@ import MySubmission from "../Pages/Dashboard/MySubmission";
 import Withdraw from "../Pages/Dashboard/Withdrawal";
 import AdminWithdrawRequests from "../Pages/Dashboard/WithdrawRequests";
 import PaymentForm from "../Pages/Dashboard/Payment";
+import PaymentSuccess from "../Pages/Dashboard/PaymentSuccess";
+import PaymentFail from "../Pages/Dashboard/PaymentFailled";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +107,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PaymentForm />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment-success",
+        element: (
+          <PrivateRoute>
+            <PaymentSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment-fail",
+        element: (
+          <PrivateRoute>
+            <PaymentFail />
           </PrivateRoute>
         ),
       },

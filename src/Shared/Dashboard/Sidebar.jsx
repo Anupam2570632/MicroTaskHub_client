@@ -99,9 +99,9 @@ export default function DashboardSidebar({ onLinkClick }) {
         label: "My Tasks",
       },
       {
-        href: "/dashboard/withdrawalRequest",
+        href: "/dashboard/payment",
         icon: <FaMoneyBill />,
-        label: "Withdraw Earnings",
+        label: "Buy Coin",
       },
     ],
   };

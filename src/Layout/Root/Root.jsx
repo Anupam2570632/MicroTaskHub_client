@@ -9,6 +9,7 @@ import Testimonials from "../../Components/home/Testimonial";
 const Root = () => {
   return (
     <div>
+      
       <Navbar />
       <div className="mt-11 md:mt-[58px] ">
         <HeroSection />

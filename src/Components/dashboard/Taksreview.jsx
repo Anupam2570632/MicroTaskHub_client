@@ -28,7 +28,7 @@ const TaskReview = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Task Review</h2>
+      <h2 className="text-2xl font-bold mb-4 text-[#e9eaea]">Task Review</h2>
 
       <table className="table w-full border">
         <thead>
@@ -41,7 +41,7 @@ const TaskReview = () => {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="text-[#e9eaea]">
           {reviews.map((item) => (
             <tr key={item._id}>
               <td>
@@ -55,7 +55,7 @@ const TaskReview = () => {
 
               <td>
                 <button
-                  className="btn btn-info btn-sm"
+                  className="btn btn-info btn-sm bg-gray-500 py-1 px-3 cursor-pointer duration-200 m-1 rounded-2xl"
                   onClick={() => setSelectedSubmission(item)}
                 >
                   View
@@ -64,14 +64,14 @@ const TaskReview = () => {
 
               <td>
                 <button
-                  className="btn btn-success btn-sm mr-2"
+                  className="btn btn-success btn-sm mr-2 bg-green-500 py-1 px-3 cursor-pointer duration-200 m-1 rounded-2xl"
                   onClick={() => handleUpdateStatus(item, "approved")}
                 >
                   Approve
                 </button>
 
                 <button
-                  className="btn btn-error btn-sm"
+                  className="btn btn-error btn-sm bg-red-500 py-1 px-3 cursor-pointer duration-200 m-1 rounded-2xl"
                   onClick={() => handleUpdateStatus(item, "rejected")}
                 >
                   Reject
